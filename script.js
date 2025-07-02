@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
         elements.bmsId.classList.remove('is-invalid');
         
         // Generate the link
-        currentReferralLink = `https://tpmyandtpth.github.io/RAF/${bmsId}`;
+        currentReferralLink = `https://tpmyandtpth.github.io/ambRAF/${bmsId}`;
         elements.referralLink.value = currentReferralLink;
         
         // Generate QR code
