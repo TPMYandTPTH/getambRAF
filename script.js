@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
             await new Promise(resolve => setTimeout(resolve, 1000));
             
             // Generate the link with # symbol as requested
-            currentReferralLink = `https://tpmyandtpth.github.io/ambRAF/#${bmsId}`;
+            currentReferralLink = `https://tpmyandtpth.github.io/RAF/#${bmsId}`;
             elements.referralLink.value = currentReferralLink;
             
             // Generate QR code
@@ -454,10 +454,39 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize the application
     init();
     
+    // Add ambassador indicator animation
+    addAmbassadorAnimation();
+    
     // Track page load
     trackEvent('page_load', { 
         timestamp: new Date().toISOString(),
         user_agent: navigator.userAgent,
         url: window.location.href
     });
+
+    // Ambassador indicator animation
+    function addAmbassadorAnimation() {
+        const indicator = document.querySelector('.user-type-indicator');
+        if (indicator) {
+            // Add click animation
+            indicator.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+
+            // Add entrance animation
+            setTimeout(() => {
+                indicator.style.opacity = '0';
+                indicator.style.transform = 'translateY(10px)';
+                indicator.style.transition = 'all 0.5s ease-out';
+                
+                requestAnimationFrame(() => {
+                    indicator.style.opacity = '1';
+                    indicator.style.transform = 'translateY(0)';
+                });
+            }, 800);
+        }
+    }
 });
