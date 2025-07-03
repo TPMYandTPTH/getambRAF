@@ -6,94 +6,183 @@
     <title>TP Ambassador RAF Get Link Portal</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="TPLogo11.png" type="image/png">
 </head>
 <body>
+    <!-- Background Elements -->
+    <div class="bg-pattern"></div>
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
     <div class="container py-4">
-        <div class="text-center mb-4">
-            <img src="TPLogo11.png" alt="TP Logo" class="logo img-fluid" style="max-height: 80px;">
+        <!-- Header -->
+        <div class="text-center mb-5">
+            <div class="logo-container">
+                <img src="TPLogo11.png" alt="TP Logo" class="logo img-fluid">
+            </div>
+            <h1 class="main-title">Referral Portal</h1>
+            <p class="subtitle">Generate your personalized referral link and share opportunities</p>
         </div>
 
-        <div class="card shadow-sm">
+        <!-- Main Card -->
+        <div class="main-card">
+            <div class="card-header-custom">
+                <h3 class="card-title">
+                    <i class="fas fa-link me-2"></i>
+                    Get Your Referral Link
+                </h3>
+            </div>
+            
             <div class="card-body p-4">
-                <h3 class="text-center mb-4">Get Link Referral Portal</h3>
-                
                 <!-- Step 1: BMS ID Input -->
-                <div id="step1">
-                    <div class="mb-4">
-                        <label for="bms-id" class="form-label">Enter your BMS ID to generate your referral link:</label>
-                        <input type="text" id="bms-id" class="form-control" placeholder="Enter your BMS ID">
-                        <div class="invalid-feedback">Please enter a valid 6 or 7 digit BMS ID</div>
+                <div id="step1" class="step-container">
+                    <div class="input-section">
+                        <label for="bms-id" class="form-label">
+                            <i class="fas fa-id-card me-2"></i>
+                            Enter your BMS ID
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="text" id="bms-id" class="form-control custom-input" 
+                                   placeholder="Enter your 6 or 7 digit BMS ID" maxlength="7">
+                            <div class="input-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <div class="invalid-feedback">
+                            <i class="fas fa-exclamation-triangle me-1"></i>
+                            Please enter a valid 6 or 7 digit BMS ID
+                        </div>
                     </div>
                     
-                    <button id="generate-btn" class="btn btn-primary w-100">Generate Referral Link</button>
+                    <button id="generate-btn" class="btn btn-primary btn-generate">
+                        <i class="fas fa-magic me-2"></i>
+                        Generate Referral Link
+                        <div class="btn-loading">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </div>
+                    </button>
                 </div>
                 
                 <!-- Step 2: Generated Link -->
-                <div id="step2" style="display:none;">
-                    <div class="alert alert-success">
-                        <h5 class="alert-heading">Your Personal Referral Link</h5>
-                        <p>Share this link with your friends:</p>
+                <div id="step2" class="step-container" style="display:none;">
+                    <div class="success-animation">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    
+                    <div class="result-section">
+                        <h5 class="result-title">
+                            <i class="fas fa-star me-2"></i>
+                            Your Personal Referral Link
+                        </h5>
+                        <p class="result-subtitle">Share this link with your friends and colleagues</p>
                         
-                        <div class="input-group mb-3">
-                            <input type="text" id="referral-link" class="form-control" readonly>
-                            <button id="copy-btn" class="btn btn-secondary" type="button">Copy</button>
+                        <div class="link-container">
+                            <div class="input-group">
+                                <input type="text" id="referral-link" class="form-control link-input" readonly>
+                                <button id="copy-btn" class="btn btn-copy" type="button">
+                                    <i class="fas fa-copy"></i>
+                                    <span class="copy-text">Copy</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                     
                     <!-- QR Code -->
-                    <div class="text-center my-4">
-                        <div id="qr-code"></div>
-                        <p class="mt-2">Scan to share</p>
+                    <div class="qr-section">
+                        <h6 class="qr-title">
+                            <i class="fas fa-qrcode me-2"></i>
+                            QR Code
+                        </h6>
+                        <div class="qr-container">
+                            <div id="qr-code"></div>
+                        </div>
+                        <p class="qr-subtitle">Scan to share instantly</p>
                     </div>
                     
                     <!-- Share Buttons -->
-                    <div class="d-flex justify-content-center gap-2 mb-4 flex-wrap">
-                        <button id="share-whatsapp" class="btn btn-success mb-2">
-                            <i class="fab fa-whatsapp me-2"></i> WhatsApp
-                        </button>
-                        <button id="share-line" class="btn btn-success mb-2" style="background-color: #00B900;">
-                            <i class="fab fa-line me-2"></i> Line
-                        </button>
-                        <button id="share-facebook" class="btn btn-success mb-2" style="background-color: #1877F2;">
-                            <i class="fab fa-facebook-f me-2"></i> Facebook
-                        </button>
+                    <div class="share-section">
+                        <h6 class="share-title">
+                            <i class="fas fa-share-alt me-2"></i>
+                            Share on Social Media
+                        </h6>
+                        <div class="share-buttons">
+                            <button id="share-whatsapp" class="btn btn-share btn-whatsapp">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>WhatsApp</span>
+                            </button>
+                            <button id="share-line" class="btn btn-share btn-line">
+                                <i class="fab fa-line"></i>
+                                <span>Line</span>
+                            </button>
+                            <button id="share-facebook" class="btn btn-share btn-facebook">
+                                <i class="fab fa-facebook-f"></i>
+                                <span>Facebook</span>
+                            </button>
+                        </div>
                     </div>
                     
-                    <button id="new-link-btn" class="btn btn-outline-primary w-100">
-                        <i class="fas fa-plus me-2"></i> Create Another Link
+                    <button id="new-link-btn" class="btn btn-outline-primary btn-new-link">
+                        <i class="fas fa-plus me-2"></i>
+                        Create Another Link
                     </button>
                 </div>
             </div>
         </div>
         
         <!-- Social Media Links -->
-        <div class="mt-4">
+        <div class="social-media-section">
+            <h4 class="social-section-title">Connect With Us</h4>
             <div class="row text-center">
                 <!-- TP Global -->
-                <div class="col-md-4 mb-3">
-                    <h5>TP Global</h5>
-                    <div class="d-flex justify-content-center gap-3">
-                        <a href="https://www.linkedin.com/company/teleperformance" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://www.youtube.com/@TeleperformanceGroup" class="social-icon"><i class="fab fa-youtube"></i></a>
-                        <a href="https://www.tiktok.com/@teleperformance_group" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                <div class="col-md-4 mb-4">
+                    <div class="social-group">
+                        <h5 class="social-group-title">TP Global</h5>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/company/teleperformance" class="social-icon linkedin" target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://www.youtube.com/@TeleperformanceGroup" class="social-icon youtube" target="_blank">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="https://www.tiktok.com/@teleperformance_group" class="social-icon tiktok" target="_blank">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <!-- TP Malaysia -->
-                <div class="col-md-4 mb-3">
-                    <h5>TP Malaysia</h5>
-                    <div class="d-flex justify-content-center gap-3">
-                        <a href="http://www.facebook.com/TPinMalaysia/" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="http://www.instagram.com/tp_malaysia/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <div class="col-md-4 mb-4">
+                    <div class="social-group">
+                        <h5 class="social-group-title">TP Malaysia</h5>
+                        <div class="social-links">
+                            <a href="http://www.facebook.com/TPinMalaysia/" class="social-icon facebook" target="_blank">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="http://www.instagram.com/tp_malaysia/" class="social-icon instagram" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <!-- TP Thailand -->
-                <div class="col-md-4 mb-3">
-                    <h5>TP Thailand</h5>
-                    <div class="d-flex justify-content-center gap-3">
-                        <a href="http://www.facebook.com/TPinThailand/" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="http://www.instagram.com/tpinthailand/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <div class="col-md-4 mb-4">
+                    <div class="social-group">
+                        <h5 class="social-group-title">TP Thailand</h5>
+                        <div class="social-links">
+                            <a href="http://www.facebook.com/TPinThailand/" class="social-icon facebook" target="_blank">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="http://www.instagram.com/tpinthailand/" class="social-icon instagram" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -101,14 +190,14 @@
     </div>
     
     <!-- Footer -->
-    <footer>
+    <footer class="custom-footer">
         <div class="container">
-            <div class="row">
+            <div class="row align-items-center">
                 <div class="col-md-6 text-center text-md-start">
                     <p class="mb-0">© <span id="current-year"></span> TP.COM All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
-                    <p class="mb-0">#MoreTogether</p>
+                    <p class="mb-0 hashtag">#MoreTogether</p>
                 </div>
             </div>
         </div>
