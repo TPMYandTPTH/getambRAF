@@ -112,6 +112,20 @@ body {
     font-size: 1.1rem;
     color: var(--gray-600);
     font-weight: 400;
+    margin-bottom: var(--space-md);
+}
+
+.user-type-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    background-color: var(--black);
+    color: var(--white);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-full);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: var(--space-md);
 }
 
 /* Main Card */
@@ -442,8 +456,17 @@ body {
     margin-bottom: var(--space-lg);
 }
 
+.social-groups-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+}
+
 .social-group {
-    margin-bottom: var(--space-lg);
+    flex: 1;
+    min-width: 150px;
 }
 
 .social-group-title {
@@ -455,7 +478,7 @@ body {
 
 .social-links {
     display: flex;
-    gap: var(--space-md);
+    gap: var(--space-sm);
     justify-content: center;
 }
 
@@ -528,6 +551,15 @@ body {
     
     .btn-share {
         min-width: 200px;
+    }
+    
+    .social-groups-container {
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+    
+    .social-group {
+        min-width: unset;
     }
     
     .social-links {
