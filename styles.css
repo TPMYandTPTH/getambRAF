@@ -112,20 +112,26 @@ body {
     font-size: 1.1rem;
     color: var(--gray-600);
     font-weight: 400;
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-lg);
 }
 
-.user-type-badge {
+.user-type-indicator {
     display: inline-flex;
     align-items: center;
     gap: var(--space-sm);
-    background-color: var(--black);
-    color: var(--white);
-    padding: var(--space-sm) var(--space-md);
-    border-radius: var(--radius-full);
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: var(--space-md);
+    color: var(--gray-700);
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.indicator-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-green);
+    border-radius: 50%;
+    display: block;
 }
 
 /* Main Card */
@@ -458,15 +464,17 @@ body {
 
 .social-groups-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: flex-start;
-    gap: var(--space-lg);
+    gap: var(--space-xl);
     flex-wrap: wrap;
+    max-width: 100%;
 }
 
 .social-group {
-    flex: 1;
-    min-width: 150px;
+    flex: 0 1 auto;
+    min-width: 120px;
+    text-align: center;
 }
 
 .social-group-title {
@@ -554,16 +562,17 @@ body {
     }
     
     .social-groups-container {
-        flex-direction: column;
-        gap: var(--space-md);
+        flex-direction: row;
+        justify-content: center;
+        gap: var(--space-lg);
     }
     
     .social-group {
-        min-width: unset;
+        min-width: 100px;
     }
     
     .social-links {
-        gap: var(--space-sm);
+        gap: var(--space-xs);
     }
     
     .social-icon {
