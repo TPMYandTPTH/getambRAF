@@ -124,15 +124,12 @@ body {
     font-weight: 500;
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    padding: var(--space-sm) var(--space-md);
-    border: 1px solid var(--gray-200);
-    border-radius: var(--radius-full);
     transition: all var(--transition);
     cursor: default;
 }
 
 .user-type-indicator:hover {
-    border-color: var(--accent-green);
+    color: var(--black);
     transform: translateY(-1px);
 }
 
