@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
             await new Promise(resolve => setTimeout(resolve, 1000));
             
             // Generate the link with # symbol as requested
-            currentReferralLink = `https://tpmyandtpth.github.io/RAF/#${bmsId}`;
+            currentReferralLink = `https://tpmyandtpth.github.io/ambRAF/#${bmsId}`;
             elements.referralLink.value = currentReferralLink;
             
             // Generate QR code
